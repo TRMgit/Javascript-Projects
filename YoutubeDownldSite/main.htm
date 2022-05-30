@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Fill out info below to download your video:</p>
+
+<img src="/img/al.png">hl</img>
+
+<script type="text/javascript">
+
+
+
+var LenkeVid = window. prompt("Enter full video link: "); alert("Click button on page to start download. Video link selected: " + name);
+
+</script>
+
+<input type="button" onclick="myFunction2()" value="Download Now">
+  <!-- Video link: <input type="text" name="Videolnk" size="200" value=><br>
+ <br><br>
+  <input type="button" onclick="myFunction()" value="Download Now">
+  <input type="button" onclick="myFunction2()" value2="Download Now2">
+
+<script>
+
+function myFunction2() {
+let value = document.Videolnk.value;
+
+console.log(value2);
+document.write(value2);
+
+console.log(value);
+document.write(value);
+}
+
+-->
+<script>
+function myFunction2() {
+
+//let LenkeVid = document.Videolnk.value;
+
+
+  let fs = require('fs')
+  let youtubedl = require('youtube-dl')
+
+  let video = youtubedl(LenkeVid,
+    // Optional arguments passed to youtube-dl.
+    ['--format=18'],
+  )
+
+  // Will be called when the download starts.
+  video.on('info', function(info) {
+    console.log('Your download is soon complete...')
+    console.log('filename: ' + info._filename)
+    console.log('size: ' + info.size)
+  })
+
+  video.pipe(fs.createWriteStream('downloaded_vid.mp4'))
+
+
+}
+</script>
+
+</body>
+</html>
